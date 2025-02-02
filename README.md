@@ -15,7 +15,7 @@
 ### 1. Клонирование репозитория
 ```sh
 git clone git@github.com:l3egaliev/back-task.git
-cd orders-system
+cd back-task
 ```
 
 ### 2. Создание `.env` файла
