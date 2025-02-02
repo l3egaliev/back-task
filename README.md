@@ -7,8 +7,8 @@
 ## Требования
 - PHP 8.2+
 - Composer
-- MySQL (или другая поддерживаемая база данных)
-- Docker и Docker Compose (опционально)
+- MySQL
+- Docker и Docker Compose
 - Node.js + NPM (для работы фронтенда, если потребуется)
 
 ## Установка
