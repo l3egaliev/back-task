@@ -9,7 +9,6 @@
 - Composer
 - MySQL
 - Docker и Docker Compose
-- Node.js + NPM (для работы фронтенда, если потребуется)
 
 ## Установка
 
@@ -35,7 +34,7 @@ DB_USERNAME=root
 DB_PASSWORD=rootpassword
 ```
 
-### 3. Запуск контейнеров (если используется Docker)
+### 3. Запуск контейнеров
 ```sh
 docker-compose up -d
 ```

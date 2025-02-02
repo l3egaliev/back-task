@@ -1,19 +1,28 @@
-FROM php:8.2-apache
+FROM php:8.2-apache as base
 
-# Обновляем пакеты и устанавливаем нужные расширения
+# Устанавливаем зависимости и расширения PHP
 RUN apt-get update && apt-get install -y \
     libzip-dev \
     unzip \
- && docker-php-ext-install pdo pdo_mysql
+ && docker-php-ext-install pdo pdo_mysql zip
 
 # Включаем модуль mod_rewrite
 RUN a2enmod rewrite
 
-# Обеспечиваем, чтобы DocumentRoot указывал на директорию public Laravel
-RUN sed -ri -e 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available/*.conf
+# Устанавливаем рабочую директорию
+WORKDIR /var/www/html
 
-# Копируем файлы приложения
+# Копируем файлы приложения в контейнер (включая artisan)
 COPY . /var/www/html
+
+# Устанавливаем зависимости с Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN composer install
 
 # Устанавливаем правильные права для Apache
 RUN chown -R www-data:www-data /var/www/html
+
+# Обновляем конфигурацию Apache для использования public директории Laravel
+RUN echo "DocumentRoot /var/www/html/public" > /etc/apache2/sites-available/000-default.conf
+
+EXPOSE 80
