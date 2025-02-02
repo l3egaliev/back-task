@@ -19,12 +19,7 @@ git clone git@github.com:l3egaliev/back-task.git
 cd orders-system
 ```
 
-### 2. Установка зависимостей
-```sh
-composer install
-```
-
-### 3. Создание `.env` файла
+### 2. Создание `.env` файла
 Скопируйте `.env.example` в `.env` и настройте его:
 ```sh
 cp .env.example .env
@@ -40,25 +35,21 @@ DB_USERNAME=root
 DB_PASSWORD=rootpassword
 ```
 
-### 4. Генерация ключа приложения
-```sh
-php artisan key:generate
-```
-
-### 5. Запуск контейнеров (если используется Docker)
+### 3. Запуск контейнеров (если используется Docker)
 ```sh
 docker-compose up -d
 ```
 
-### 6. Запуск миграций и сидеров
+### 4. Установка зависимостей
+```sh
+docker-compose exec app composer install
+```
+
+### 5. Запуск миграций и сидеров
 ```sh
 docker-compose exec app php artisan migrate
 ```
 
-### 7. Запуск сервера Laravel
-```sh
-php artisan serve
-```
 Откройте [http://127.0.0.1:8000](http://127.0.0.1:8000) в браузере.
 
 ## Работа с заказами
