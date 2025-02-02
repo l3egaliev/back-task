@@ -15,7 +15,7 @@
 
 ### 1. Клонирование репозитория
 ```sh
-git clone https://github.com/your-repo/orders-system.git
+git clone git@github.com:l3egaliev/back-task.git
 cd orders-system
 ```
 
