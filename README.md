@@ -36,12 +36,12 @@ DB_PASSWORD=rootpassword
 
 ### 3. Запуск контейнеров
 ```sh
-docker-compose up -d
+docker-compose up --build -d
 ```
 
 ### 4. Установка зависимостей
 ```sh
-docker-compose exec app composer install
+docker-compose exec app composer install --no-dev --optimize-autoloader
 ```
 
 ### 5. Запуск миграций и сидеров
